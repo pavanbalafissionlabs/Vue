@@ -3,7 +3,7 @@
     <Header />
     <Footer />
     <SIDEBAR />
-    <h2>Hai</h2>
+
     <div class="Userdetails">
       <h2>you details enterd in previous page</h2>
       <div>
@@ -41,6 +41,10 @@ export default {
 
 <style scoped>
 .Userdetails {
-  margin-left: 10%;
+  color: whitesmoke;
+  padding: 0 10px;
+  font-size: 20px;
+  font-style: normal;
+  margin-left: 200px;
 }
 </style>

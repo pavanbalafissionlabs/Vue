@@ -29,8 +29,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="user in users" :key="user.id">
-                  <td>{{ user.name }}</td>
+                <!-- <tr v-for="user in users" :key="user.id"> -->
+                <tr v-for="user in filterUser" :key="user.id">
+                  <td>{{ user.name | filterUser.toUpperCase() }}</td>
                   <td>{{ user.id }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.phone }}</td>
@@ -49,6 +50,11 @@
         </table> -->
       </div>
     </div>
+    search a user by Name:<input
+      type="text"
+      v-model="search"
+      placeholder="search user"
+    />
   </div>
 </template>
 
@@ -68,12 +74,20 @@ export default {
   data() {
     return {
       users: [],
+      search: "",
       loading: false,
     };
   },
   mounted() {
     window.console.log(this.$store.state.users);
     this.getusers();
+  },
+  computed: {
+    filterUser: function () {
+      return this.users.filter((user) => {
+        return user.name.match(this.search);
+      });
+    },
   },
   methods: {
     async getusers() {
@@ -90,6 +104,16 @@ export default {
         window.console.log(error);
       }
     },
+    // async postUser(){
+    //   try{
+    //     const post={
+
+    //     }
+    //     const response = await axios.post(
+    //       "https://jsonplaceholder.typicode.com/users"
+    //     );
+    //   }
+    // }
   },
 };
 </script>

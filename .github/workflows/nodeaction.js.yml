@@ -15,4 +15,12 @@ jobs:
         run: npm install
       - name: Run ESLint
         run: npm run lint
+   
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm install
+      - run: npm run lint   
 
